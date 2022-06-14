@@ -1,0 +1,2 @@
+# Write your MySQL query statement below
+select D.name Department,E.name as Employee, E.salary as Salary from Employee as E,Department as D where  E.departmentId=D.id and (departmentId,Salary) in (select departmentId,max(salary) from Employee group by departmentId);
