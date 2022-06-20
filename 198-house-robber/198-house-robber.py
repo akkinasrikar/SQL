@@ -5,13 +5,11 @@ class Solution:
         if l==0: return 0
         if l==2: return max(nums)
         
-        def dp(n,memo):
+        @lru_cache(None)
+        def dp(n):
             if n>l-1: return 0
-            if n in memo: return memo[n]
-            memo[n]=max(nums[n]+dp(n+2,memo),dp(n+1,memo))
-            return memo[n]
-        
-        memo={}
-        return dp(0,memo)
+            return max(nums[n]+dp(n+2),dp(n+1))
+
+        return dp(0)
         
         
